@@ -40,5 +40,391 @@
   .logo-row { display: flex; align-items: center; gap: 10px; }
   .logo-mark { width: 36px; height: 36px; border-radius: var(--radius-sm); background: var(--yellow); color: #000; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 800; font-size: 14px; letter-spacing: -0.5px; }
   .logo-text { font-family: var(--mono); font-weight: 800; font-size: 16px; color: #fff; letter-spacing: -0.5px; }
-  .logo-sub { font-size: 10px; color: var(--text-dim); font-weight: 600; letter-spacing:
-  
+  .logo-sub { font-size: 10px; color: var(--text-dim); font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; margin-top: 1px; }
+  .nav { padding: 12px 8px; flex: 1; }
+  .nav-sec { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--text-faint); padding: 10px 12px 4px; text-transform: uppercase; }
+  .nav-btn { display: flex; align-items: center; gap: 8px; width: 100%; padding: 9px 12px; border: none; border-radius: var(--radius-sm); background: transparent; color: var(--text-dim); font-size: 13px; font-weight: 500; cursor: pointer; font-family: var(--sans); text-align: left; transition: all 0.15s; position: relative; }
+  .nav-btn:hover { background: rgba(255,255,255,0.03); color: var(--text); }
+  .nav-btn.active { background: var(--yellow-dim); color: var(--yellow); }
+  .nav-btn .icon { font-size: 14px; width: 20px; text-align: center; }
+  .nav-btn .badge { margin-left: auto; background: rgba(255,255,255,0.06); color: var(--text-dim); font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; font-family: var(--mono); }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); margin-left: auto; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+  .sidebar-footer { padding: 12px 16px; border-top: 1px solid var(--border); font-size: 10px; color: var(--text-faint); font-family: var(--mono); }
+  .main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .topbar { display: flex; align-items: center; gap: 12px; padding: 0 20px; height: 52px; min-height: 52px; border-bottom: 1px solid var(--border); background: rgba(17,17,17,0.85); backdrop-filter: blur(16px); }
+  .menu-btn { display: none; background: none; border: none; color: var(--text-dim); cursor: pointer; padding: 4px; }
+  .topbar-title { font-weight: 700; font-size: 14px; color: #fff; font-family: var(--mono); letter-spacing: -0.3px; }
+  .topbar-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .pill { font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 20px; font-family: var(--mono); }
+  .pill-green { background: rgba(34,197,94,0.1); color: var(--green); }
+  .pill-btn { font-size: 10px; font-weight: 600; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.05); color: var(--text-dim); border: none; cursor: pointer; font-family: var(--sans); transition: all 0.15s; }
+  .pill-btn:hover { background: rgba(255,255,255,0.08); color: var(--text); }
+  .panel { display: none; flex: 1; flex-direction: column; overflow: hidden; }
+  .panel.active { display: flex; }
+  .chat-messages { flex: 1; overflow-y: auto; padding: 20px; }
+  .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; gap: 8px; padding-bottom: 40px; }
+  .empty-icon { font-size: 40px; margin-bottom: 6px; opacity: 0.9; }
+  .empty-title { font-size: 18px; font-weight: 700; color: #fff; font-family: var(--mono); letter-spacing: -0.3px; }
+  .empty-sub { font-size: 13px; color: var(--text-dim); max-width: 340px; line-height: 1.55; }
+  .suggestions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 18px; max-width: 480px; }
+  .chip { padding: 7px 14px; border-radius: 20px; border: 1px solid var(--yellow-border); background: rgba(250,175,18,0.05); color: var(--yellow); font-size: 12px; font-weight: 500; cursor: pointer; font-family: var(--sans); transition: all 0.15s; }
+  .chip:hover { background: rgba(250,175,18,0.12); border-color: rgba(250,175,18,0.4); }
+  .msg-row { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 16px; }
+  .msg-row.user { justify-content: flex-end; }
+  .msg-avatar { width: 30px; height: 30px; border-radius: var(--radius-sm); background: var(--yellow); color: #000; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 800; font-size: 10px; flex-shrink: 0; margin-top: 2px; }
+  .bubble { border-radius: 4px 14px 14px 14px; padding: 12px 16px; max-width: 78%; font-size: 13px; line-height: 1.65; }
+  .bubble.bot { background: rgba(255,255,255,0.035); border: 1px solid var(--border); color: var(--text); }
+  .bubble.user { background: var(--yellow); color: #000; border-radius: 14px 4px 14px 14px; font-weight: 500; line-height: 1.5; }
+  .bubble p { margin: 3px 0; }
+  .bubble .heading { font-weight: 700; font-size: 14px; margin: 10px 0 4px; }
+  .bubble .list-item { padding-left: 12px; margin: 2px 0; }
+  .typing { display: flex; gap: 5px; padding: 4px 0; }
+  .typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); animation: bounce 0.8s infinite; }
+  .typing span:nth-child(2) { animation-delay: 0.15s; }
+  .typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes bounce { 0%,100%{transform:translateY(0);opacity:0.3} 50%{transform:translateY(-5px);opacity:1} }
+  .input-area { padding: 12px 20px 16px; border-top: 1px solid var(--border); background: rgba(17,17,17,0.5); }
+  .input-row { display: flex; gap: 8px; align-items: flex-end; }
+  .chat-input { flex: 1; padding: 10px 14px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.035); color: #fff; font-size: 13px; font-family: var(--sans); resize: none; line-height: 1.5; max-height: 120px; transition: border-color 0.15s; }
+  .chat-input:focus { border-color: var(--border-focus); outline: none; }
+  .chat-input::placeholder { color: var(--text-faint); }
+  .send-btn { width: 40px; height: 40px; border-radius: var(--radius); border: none; background: var(--yellow); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: opacity 0.15s, transform 0.1s; }
+  .send-btn:disabled { opacity: 0.35; cursor: default; }
+  .send-btn:not(:disabled):active { transform: scale(0.94); }
+  .input-hint { font-size: 10px; color: var(--text-faint); margin-top: 6px; text-align: center; }
+  .kb-panel { flex: 1; overflow-y: auto; padding: 20px; }
+  .kb-toolbar { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .kb-search { flex: 1; min-width: 180px; padding: 9px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.035); color: #fff; font-size: 13px; font-family: var(--sans); transition: border-color 0.15s; }
+  .kb-search:focus { border-color: var(--border-focus); outline: none; }
+  .kb-search::placeholder { color: var(--text-faint); }
+  .add-btn { padding: 9px 18px; border-radius: 10px; border: none; background: var(--yellow); color: #000; font-weight: 700; font-size: 12px; cursor: pointer; font-family: var(--mono); white-space: nowrap; transition: transform 0.1s; }
+  .add-btn:active { transform: scale(0.96); }
+  .cat-row { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+  .cat-btn { padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.06); background: transparent; color: var(--text-dim); font-size: 11px; font-weight: 600; cursor: pointer; font-family: var(--sans); transition: all 0.15s; }
+  .cat-btn:hover { border-color: rgba(255,255,255,0.12); }
+  .cat-btn.active { background: var(--yellow-dim); color: var(--yellow); border-color: var(--yellow-border); }
+  .kb-card { background: rgba(255,255,255,0.025); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; transition: border-color 0.15s; }
+  .kb-card:hover { border-color: rgba(255,255,255,0.1); }
+  .kb-card-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 14px 16px 10px; gap: 12px; flex-wrap: wrap; }
+  .kb-card-title { font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 4px; }
+  .kb-cat-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--yellow); background: var(--yellow-dim); padding: 2px 8px; border-radius: 4px; display: inline-block; }
+  .kb-actions { display: flex; gap: 4px; }
+  .kb-action-btn { background: none; border: none; color: var(--text-dim); font-size: 11px; font-weight: 600; cursor: pointer; padding: 3px 8px; border-radius: 6px; font-family: var(--sans); transition: all 0.15s; }
+  .kb-action-btn:hover { background: rgba(255,255,255,0.05); color: var(--text); }
+  .kb-action-btn.danger:hover { color: var(--danger); }
+  .kb-card-content { padding: 0 16px 14px; font-size: 11.5px; line-height: 1.7; color: var(--text-dim); white-space: pre-wrap; font-family: var(--mono); max-height: 180px; overflow-y: auto; }
+  .kb-empty { text-align: center; padding: 50px 20px; color: var(--text-faint); font-size: 13px; }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--bg-elevated); border-radius: 16px; border: 1px solid rgba(255,255,255,0.08); width: 100%; max-width: 560px; max-height: 85vh; overflow-y: auto; animation: modalIn 0.2s ease; }
+  @keyframes modalIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px 14px; border-bottom: 1px solid var(--border); }
+  .modal-title { font-weight: 700; font-size: 16px; color: #fff; font-family: var(--mono); }
+  .close-btn { background: none; border: none; color: var(--text-dim); font-size: 24px; cursor: pointer; line-height: 1; padding: 0 4px; transition: color 0.15s; }
+  .close-btn:hover { color: #fff; }
+  .form-group { padding: 12px 20px 0; }
+  .form-label { display: block; font-size: 11px; font-weight: 700; color: var(--text-dim); margin-bottom: 6px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .form-input, .form-select, .form-textarea { width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.035); color: #fff; font-size: 13px; font-family: var(--sans); transition: border-color 0.15s; }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--border-focus); outline: none; }
+  .form-textarea { resize: vertical; line-height: 1.6; min-height: 220px; font-family: var(--mono); font-size: 12px; }
+  .form-select option { background: var(--bg-elevated); }
+  .modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 16px 20px 20px; }
+  .btn-cancel { padding: 9px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); background: transparent; color: var(--text-dim); font-size: 12px; font-weight: 600; cursor: pointer; font-family: var(--sans); transition: all 0.15s; }
+  .btn-cancel:hover { border-color: rgba(255,255,255,0.15); color: var(--text); }
+  .btn-save { padding: 9px 22px; border-radius: 10px; border: none; background: var(--yellow); color: #000; font-size: 12px; font-weight: 700; cursor: pointer; font-family: var(--mono); transition: transform 0.1s; }
+  .btn-save:active { transform: scale(0.96); }
+  .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 90; }
+  .sidebar-overlay.open { display: block; }
+  @media (max-width: 768px) {
+    .sidebar { position: fixed; top: 0; left: 0; bottom: 0; transform: translateX(-100%); }
+    .sidebar.open { transform: translateX(0); }
+    .menu-btn { display: flex; }
+    .bubble { max-width: 88%; }
+    .topbar { padding: 0 14px; }
+    .chat-messages { padding: 16px; }
+    .input-area { padding: 10px 14px 14px; }
+    .kb-panel { padding: 16px; }
+    .suggestions { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-row">
+        <div class="logo-mark">AX</div>
+        <div><div class="logo-text">AVEX</div><div class="logo-sub">Soporte Interno</div></div>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="nav-sec">CONSULTAS</div>
+      <button class="nav-btn active" id="navChat" onclick="switchPanel('chat')"><span class="icon">💬</span> Agente IA<div class="live-dot"></div></button>
+      <div class="nav-sec" style="margin-top:12px">GESTIÓN</div>
+      <button class="nav-btn" id="navKb" onclick="switchPanel('kb')"><span class="icon">📋</span> Base de Conocimiento<span class="badge" id="kbBadgeSide">6</span></button>
+    </nav>
+    <div class="sidebar-footer">v2.0 · deploy ready</div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn" onclick="openSidebar()"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      <div class="topbar-title" id="topbarTitle">Agente de Soporte</div>
+      <div class="topbar-right">
+        <span class="pill pill-green" id="kbBadgeTop">6 artículos</span>
+        <button class="pill-btn" id="clearBtn" onclick="clearChat()">Limpiar chat</button>
+      </div>
+    </header>
+    <div class="panel active" id="panelChat">
+      <div class="chat-messages" id="chatMessages">
+        <div class="empty-state" id="emptyState">
+          <div class="empty-icon">⚡</div>
+          <div class="empty-title">Agente interno AVEX</div>
+          <div class="empty-sub">Preguntame sobre precios, zonas, protocolos o cómo manejar situaciones con clientes.</div>
+          <div class="suggestions">
+            <button class="chip" onclick="quickSend(this.textContent)">¿Qué zonas cubrimos?</button>
+            <button class="chip" onclick="quickSend(this.textContent)">Cliente enojado por demora</button>
+            <button class="chip" onclick="quickSend(this.textContent)">¿Cuándo escalar a coordinación?</button>
+            <button class="chip" onclick="quickSend(this.textContent)">¿Qué servicios ofrecemos?</button>
+          </div>
+        </div>
+      </div>
+      <div class="input-area">
+        <div class="input-row">
+          <textarea class="chat-input" id="chatInput" placeholder="Escribí tu consulta..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+          <button class="send-btn" id="sendBtn" onclick="sendMessage()" disabled><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M9 3l6 6-6 6" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="input-hint">Enter para enviar · Shift+Enter para nueva línea</div>
+      </div>
+    </div>
+    <div class="panel" id="panelKb">
+      <div class="kb-panel">
+        <div class="kb-toolbar">
+          <input class="kb-search" id="kbSearch" placeholder="Buscar artículos..." oninput="renderKB()">
+          <button class="add-btn" onclick="openModal()">+ Nuevo artículo</button>
+        </div>
+        <div class="cat-row" id="catRow"></div>
+        <div id="kbList"></div>
+      </div>
+    </div>
+  </main>
+</div>
+<div class="modal-overlay" id="modal" onclick="closeOutside(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Nuevo artículo</div>
+      <button class="close-btn" onclick="closeModal()">×</button>
+    </div>
+    <div class="form-group"><label class="form-label">Título</label><input class="form-input" id="formTitle" placeholder="Ej: Protocolo de cancelación"></div>
+    <div class="form-group"><label class="form-label">Categoría</label><select class="form-select" id="formCategory"><option value="Operativo">Operativo</option><option value="Protocolo">Protocolo</option></select></div>
+    <div class="form-group"><label class="form-label">Contenido</label><textarea class="form-textarea" id="formContent" placeholder="Escribí el contenido del artículo..." rows="10"></textarea></div>
+    <div class="modal-footer"><button class="btn-cancel" onclick="closeModal()">Cancelar</button><button class="btn-save" id="saveBtn" onclick="saveArticle()">Crear artículo</button></div>
+  </div>
+</div>
+<script>
+const STORAGE_KEY='avex-kb-articles';const CATEGORIES=['Todos','Operativo','Protocolo'];let articles=[];let messages=[];let isLoading=false;let activeCategory='Todos';let editingId=null;
+const DEFAULT_ARTICLES=[{id:"svc-001",title:"Servicios y Precios",category:"Operativo",content:`SERVICIOS AVEX - LISTADO Y PRECIOS REFERENCIALES
+
+Asistencia de Batería:
+- Diagnóstico + carga/arranque: consultar precio vigente con coordinación
+- Venta e instalación de batería: margen aprox. 35% sobre costo
+- Marca principal: Moura (verificar stock antes de confirmar)
+
+Cambio de Neumático:
+- Servicio de cambio de rueda (auxilio): precio estándar de asistencia liviana
+- No incluye venta de neumático nuevo
+- Si el cliente no tiene rueda de auxilio, se le informa y se ofrece traslado
+
+Cerrajería Vehicular:
+- Apertura de vehículo: precio estándar
+- Copia de llave codificada: derivar a proveedor especializado
+
+Mecánica Liviana:
+- Diagnóstico en el lugar
+- Reparaciones menores (correas, mangueras, fusibles)
+- Si requiere taller, se coordina traslado
+
+Traslado de Motos:
+- Servicio nuevo. Solo traslado, no asistencia mecánica de motos
+- Coordinar con operador asignado a moto-traslados
+
+IMPORTANTE: Los precios se actualizan frecuentemente. Siempre confirmar con coordinación antes de cotizar al cliente.`},{id:"zone-001",title:"Zonas de Cobertura",category:"Operativo",content:`ZONAS DE COBERTURA AVEX
+
+Zonas activas:
+1. CABA (Ciudad Autónoma de Buenos Aires) — cobertura completa
+2. Zona Norte GBA — hasta aprox. Pilar/Escobar
+3. Zona Sur GBA — hasta aprox. La Plata
+4. La Plata y alrededores
+
+Fuera de cobertura:
+- Zona Oeste (Morón, Merlo, etc.) — NO cubierta actualmente
+- Interior de provincia de Buenos Aires
+- Resto del país
+
+Qué hacer si el cliente está fuera de zona:
+1. Informar amablemente que no tenemos cobertura en esa zona
+2. NO prometer ni estimar tiempos de cobertura futura
+3. Si el cliente insiste, escalar a coordinación
+4. Registrar el pedido para análisis de demanda
+
+Tiempos de llegada estimados:
+- CABA: 25-35 minutos promedio
+- Zona Norte: 30-45 minutos
+- Zona Sur: 30-45 minutos
+- La Plata: 35-50 minutos
+Estos tiempos son promedios. NUNCA prometer un tiempo exacto.`},{id:"proto-001",title:"Protocolo de Asignación",category:"Protocolo",content:`PROTOCOLO DE ASIGNACIÓN DE SERVICIO
+
+Flujo estándar (WhatsApp Bot):
+1. Cliente contacta → Bot envía bienvenida corta
+2. Bot pide ubicación (compartir ubicación de WhatsApp)
+3. Se asigna operador/técnico más cercano
+4. Durante la espera, bot recolecta datos del vehículo (tipo + combustible)
+5. Operador confirma con número de teléfono directo al cliente
+6. Servicio se realiza → Cierre + pedido de calificación
+
+Tiempo de asignación objetivo: menos de 60 segundos
+
+Escalaciones:
+- Si no hay operador disponible en 3 minutos → escalar a coordinación
+- Si la zona no tiene cobertura → informar al cliente, no inventar soluciones
+- Si es urgencia (accidente, ruta peligrosa) → llamar a coordinación directamente
+
+Datos obligatorios antes de confirmar servicio:
+- Ubicación exacta (pin de WhatsApp, no dirección escrita)
+- Tipo de vehículo (auto, camioneta, moto)
+- Tipo de combustible (nafta, diesel, GNC)
+- Descripción breve del problema
+
+IMPORTANTE: Grúa/remolque NO se gestiona por el bot. Derivar manualmente a coordinación.`},{id:"client-001",title:"Manejo de Clientes Difíciles",category:"Protocolo",content:`GUÍA DE MANEJO DE SITUACIONES DIFÍCILES
+
+Principios generales:
+- Siempre mantener la calma y el tono profesional
+- Validar la frustración del cliente ("Entiendo tu molestia")
+- No tomar nada personal
+- Si el cliente insulta o agrede: advertir una vez, si continúa, escalar a coordinación
+
+SITUACIÓN: Cliente enojado por demora
+1. Pedir disculpas por la demora
+2. Dar una actualización concreta: "El técnico está a X minutos"
+3. Si no tenés info: "Dejame verificar con el técnico y te confirmo en 2 minutos"
+4. NUNCA decir "ya llega" sin verificar
+5. Si la demora supera 15 min sobre el estimado, seguimiento proactivo cada 10 min
+
+SITUACIÓN: Cliente quiere cancelar
+1. Preguntar el motivo
+2. Si es por demora: intentar retener con actualización concreta
+3. Si insiste: cancelar sin discutir y ser amable
+4. Registrar el motivo de cancelación
+
+SITUACIÓN: Técnico no llega / no responde
+1. Intentar contactar al técnico 2 veces
+2. Si no responde en 5 minutos: reasignar a otro técnico
+3. Informar al cliente que se está reasignando
+4. Escalar a coordinación si no hay técnico de reemplazo
+
+SITUACIÓN: Problema no resuelto en el lugar
+1. Ofrecer traslado a taller (si aplica)
+2. Si no quiere traslado: cerrar servicio como "diagnóstico"
+3. No cobrar servicio completo si no se resolvió — consultar con coordinación
+
+SITUACIÓN: Reclamo post-servicio
+1. Escuchar el reclamo completo sin interrumpir
+2. Tomar nota de todos los detalles
+3. Escalar a coordinación con el resumen
+4. Plazo de respuesta: "Te contactamos en menos de 24hs"
+5. Hacer seguimiento`},{id:"metrics-001",title:"Métricas y Estándares",category:"Operativo",content:`MÉTRICAS CLAVE DE AVEX
+
+Métricas actuales:
+- +8.500 asistencias realizadas
+- NPS: 98
+- Retención de usuarios: 33%
+- Tiempo promedio de llegada: 35 minutos
+- Tiempo de asignación: menos de 60 segundos
+
+Estándares de calidad para el equipo:
+- Responder al cliente en menos de 30 segundos en chat
+- No dejar mensajes sin responder por más de 2 minutos
+- Siempre confirmar datos antes de asignar servicio
+- Hacer seguimiento post-servicio (pedir calificación)
+- Registrar toda interacción relevante
+
+Break-even operativo: ~430 servicios/mes (solo línea de asistencia, sin baterías)`},{id:"esc-001",title:"Escalaciones y Contactos",category:"Protocolo",content:`CUÁNDO Y CÓMO ESCALAR
+
+Escalar INMEDIATAMENTE a coordinación:
+- Accidente de tránsito
+- Cliente en situación de peligro (ruta, zona insegura, noche)
+- Técnico no responde después de 2 intentos
+- Cliente amenaza con acción legal
+- Pedido de grúa/remolque (no se gestiona por bot)
+- Cualquier situación que no sepas cómo manejar
+
+Escalar en el turno (no urgente):
+- Reclamos post-servicio
+- Pedidos de facturación especial
+- Consultas de clientes B2B / flotas
+- Sugerencias o feedback del cliente
+
+NO escalar (resolver vos):
+- Preguntas sobre precios y servicios
+- Consultas de cobertura de zona
+- Seguimiento de servicio en curso
+- Cancelaciones simples
+- Preguntas frecuentes
+
+Regla general: si dudás, escalá.`}];
+
+function buildSystemPrompt(){const kb=articles.map(a=>`## ${a.title} [${a.category}]\n${a.content}`).join('\n\n---\n\n');return`Sos el agente de soporte interno de AVEX (Asistencia Vehicular Express). Tu rol es ayudar al equipo de soporte a resolver consultas operativas rápidamente.
+
+REGLAS:
+- Respondé siempre en español argentino informal pero profesional
+- Sé directo y conciso — el equipo necesita respuestas rápidas, no ensayos
+- Si la respuesta está en la base de conocimiento, usala como fuente principal
+- Si NO tenés la info, decí claramente "No tengo esa info cargada — escalá a coordinación"
+- Nunca inventes precios, tiempos o datos que no estén en la base
+- Si la pregunta es sobre un caso específico de un cliente, sugerí escalar a coordinación
+- Podés dar sugerencias de cómo manejar situaciones basándote en los protocolos cargados
+- Usá formato claro: bullets y negritas cuando ayude a la legibilidad
+- Mantené las respuestas cortas: idealmente 3-6 líneas, máximo 10
+
+CONTEXTO DE AVEX:
+- Empresa de asistencia vehicular en Buenos Aires
+- Zonas: CABA, Zona Norte, Zona Sur, La Plata
+- Servicios: batería, neumáticos, cerrajería, mecánica liviana, traslado de motos
+- Canal principal: WhatsApp
+- Equipo: 5 personas de soporte
+
+BASE DE CONOCIMIENTO:
+---
+${kb}`;}
+
+function init(){try{const stored=localStorage.getItem(STORAGE_KEY);if(stored){const parsed=JSON.parse(stored);articles=Array.isArray(parsed)&&parsed.length>0?parsed:DEFAULT_ARTICLES;}else{articles=DEFAULT_ARTICLES;}}catch{articles=DEFAULT_ARTICLES;}saveArticles();renderCats();renderKB();updateBadges();updateSendBtn();document.getElementById('chatInput').addEventListener('input',updateSendBtn);}
+function saveArticles(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(articles));}catch{}updateBadges();}
+function updateBadges(){const n=articles.length;document.getElementById('kbBadgeSide').textContent=n;document.getElementById('kbBadgeTop').textContent=n+' artículo'+(n!==1?'s':'');}
+function updateSendBtn(){document.getElementById('sendBtn').disabled=!document.getElementById('chatInput').value.trim()||isLoading;}
+function openSidebar(){document.getElementById('sidebar').classList.add('open');document.getElementById('sidebarOverlay').classList.add('open');}
+function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('sidebarOverlay').classList.remove('open');}
+function switchPanel(panel){closeSidebar();document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));if(panel==='chat'){document.getElementById('panelChat').classList.add('active');document.getElementById('navChat').classList.add('active');document.getElementById('topbarTitle').textContent='Agente de Soporte';document.getElementById('clearBtn').style.display='';}else{document.getElementById('panelKb').classList.add('active');document.getElementById('navKb').classList.add('active');document.getElementById('topbarTitle').textContent='Base de Conocimiento';document.getElementById('clearBtn').style.display='none';renderKB();}}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px';}
+function quickSend(text){document.getElementById('chatInput').value=text;updateSendBtn();sendMessage();}
+function clearChat(){messages=[];document.getElementById('chatMessages').innerHTML=`<div class="empty-state" id="emptyState"><div class="empty-icon">⚡</div><div class="empty-title">Agente interno AVEX</div><div class="empty-sub">Preguntame sobre precios, zonas, protocolos o cómo manejar situaciones con clientes.</div><div class="suggestions"><button class="chip" onclick="quickSend(this.textContent)">¿Qué zonas cubrimos?</button><button class="chip" onclick="quickSend(this.textContent)">Cliente enojado por demora</button><button class="chip" onclick="quickSend(this.textContent)">¿Cuándo escalar a coordinación?</button><button class="chip" onclick="quickSend(this.textContent)">¿Qué servicios ofrecemos?</button></div></div>`;}
+function addMessage(role,content){const container=document.getElementById('chatMessages');const empty=document.getElementById('emptyState');if(empty)empty.remove();const row=document.createElement('div');row.className='msg-row'+(role==='user'?' user':'');if(role==='assistant'){row.innerHTML=`<div class="msg-avatar">AX</div><div class="bubble bot">${formatContent(content)}</div>`;}else{row.innerHTML=`<div class="bubble user"><p>${escapeHtml(content)}</p></div>`;}container.appendChild(row);container.scrollTop=container.scrollHeight;}
+function addTyping(){const container=document.getElementById('chatMessages');const row=document.createElement('div');row.className='msg-row';row.id='typingRow';row.innerHTML=`<div class="msg-avatar">AX</div><div class="bubble bot"><div class="typing"><span></span><span></span><span></span></div></div>`;container.appendChild(row);container.scrollTop=container.scrollHeight;}
+function removeTyping(){const el=document.getElementById('typingRow');if(el)el.remove();}
+function formatContent(text){return text.split('\n').map(line=>{if(line.startsWith('## ')||line.startsWith('### '))return`<p class="heading">${escapeHtml(line.replace(/^#+\s*/,''))}</p>`;if(line.startsWith('- '))return`<p class="list-item">• ${escapeHtml(line.slice(2))}</p>`;if(line.match(/^\d+\.\s/))return`<p class="list-item">${escapeHtml(line)}</p>`;if(line.trim()==='')return'<br>';let safe=escapeHtml(line);safe=safe.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');return`<p>${safe}</p>`;}).join('');}
+function escapeHtml(text){const d=document.createElement('div');d.textContent=text;return d.innerHTML;}
+async function sendMessage(){const input=document.getElementById('chatInput');const text=input.value.trim();if(!text||isLoading)return;input.value='';autoResize(input);isLoading=true;updateSendBtn();addMessage('user',text);messages.push({role:'user',content:text});addTyping();try{const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:buildSystemPrompt(),messages})});const data=await res.json();if(data.error)throw new Error(data.error.message||data.error);const reply=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n')||'Sin respuesta.';removeTyping();addMessage('assistant',reply);messages.push({role:'assistant',content:reply});}catch(err){removeTyping();addMessage('assistant',`❌ Error: ${err.message}`);}isLoading=false;updateSendBtn();}
+function renderCats(){document.getElementById('catRow').innerHTML=CATEGORIES.map(c=>`<button class="cat-btn${c===activeCategory?' active':''}" onclick="setCategory('${c}')">${c}</button>`).join('');}
+function setCategory(cat){activeCategory=cat;renderCats();renderKB();}
+function renderKB(){const search=(document.getElementById('kbSearch')?.value||'').toLowerCase();const filtered=articles.filter(a=>{const matchCat=activeCategory==='Todos'||a.category===activeCategory;const matchSearch=!search||a.title.toLowerCase().includes(search)||a.content.toLowerCase().includes(search);return matchCat&&matchSearch;});const list=document.getElementById('kbList');if(!filtered.length){list.innerHTML='<div class="kb-empty">No hay artículos que coincidan</div>';return;}list.innerHTML=filtered.map(a=>`<div class="kb-card"><div class="kb-card-header"><div><div class="kb-card-title">${escapeHtml(a.title)}</div><span class="kb-cat-tag">${a.category}</span></div><div class="kb-actions"><button class="kb-action-btn" onclick="openEdit('${a.id}')">Editar</button><button class="kb-action-btn danger" onclick="deleteArticle('${a.id}')">Borrar</button></div></div><div class="kb-card-content">${escapeHtml(a.content)}</div></div>`).join('');}
+function openModal(){editingId=null;document.getElementById('modalTitle').textContent='Nuevo artículo';document.getElementById('saveBtn').textContent='Crear artículo';document.getElementById('formTitle').value='';document.getElementById('formCategory').value='Operativo';document.getElementById('formContent').value='';document.getElementById('modal').classList.add('open');}
+function openEdit(id){const a=articles.find(x=>x.id===id);if(!a)return;editingId=id;document.getElementById('modalTitle').textContent='Editar artículo';document.getElementById('saveBtn').textContent='Guardar cambios';document.getElementById('formTitle').value=a.title;document.getElementById('formCategory').value=a.category;document.getElementById('formContent').value=a.content;document.getElementById('modal').classList.add('open');}
+function closeModal(){document.getElementById('modal').classList.remove('open');editingId=null;}
+function closeOutside(e){if(e.target===e.currentTarget)closeModal();}
+function saveArticle(){const title=document.getElementById('formTitle').value.trim();const category=document.getElementById('formCategory').value;const content=document.getElementById('formContent').value.trim();if(!title||!content)return;if(editingId){articles=articles.map(a=>a.id===editingId?{...a,title,category,content}:a);}else{articles.push({id:'art-'+Date.now(),title,category,content});}saveArticles();renderKB();closeModal();}
+function deleteArticle(id){if(!confirm('¿Borrar este artículo?'))return;articles=articles.filter(a=>a.id!==id);saveArticles();renderKB();}
+init();
+</script>
+</body>
+</html>
